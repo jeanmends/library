@@ -24,8 +24,9 @@ function addBookToLibrary(title, author, pages, bookStatus) {
  
 }
 
-addBookToLibrary("The hobbit", "JRR Tolkien", 300, true);
-addBookToLibrary("Lord of the rings", "JRR Tolkien", 500, true);
+addBookToLibrary("The hobbit", "JRR Tolkien", 300, 'Read');
+addBookToLibrary("The Shining", "Stephen King", 505, 'Read');
+addBookToLibrary("Lord of the rings", "JRR Tolkien", 500, 'Read');
 
 function showBooks(array){
    let html = '';
