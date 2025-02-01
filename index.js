@@ -1,4 +1,5 @@
 const myLibrary = [];
+let globalIndex = '';
 const main = document.querySelector('#main');
 function Book(title, author, pages, bookStatus) {
   this.title = title;
@@ -46,6 +47,7 @@ function showBooks(array){
     main.innerHTML = html;
     let allDeleteButton = document.querySelectorAll('.btn-delete');
     addEventToDeleteButon(allDeleteButton);
+
 }
 
 showBooks(myLibrary);
@@ -63,23 +65,46 @@ document.querySelector('form').addEventListener('submit', (event) =>{
       event.preventDefault();
 })
 function deleteBook(index){
-  alert(index);
-  myLibrary.splice(index, 1);
-  
+
+  myLibrary.splice(index, 1);  
   showBooks(myLibrary);
+  closeAlertDialog();
+
 }
 
 function addEventToDeleteButon(elements){
   elements.forEach((element, index) => {
     element.addEventListener("click", (e) => {
+      globalIndex = index;
       deleteDialog(e.clientX, e.clientY, index);
     })
   })
 }
 
-function deleteDialog(x, y, index){
+function deleteDialog(x, y){
   let el = document.querySelector('#delete-dialog');
   el.style.display = 'block';
   el.style.top = `${y}px`;
   el.style.left = `${x}px`;
 }
+
+function confirmAlertDialog(){
+  deleteBook(globalIndex);
+  closeAlertDialog();
+  globalIndex = '';
+}
+function closeAlertDialog(){
+  let el = document.querySelector('#delete-dialog');
+  el.style.display = 'none';
+  showBooks(myLibrary);
+}
+
+let cancelButtonDialog = document.querySelector('#btn-cancel');
+
+cancelButtonDialog.addEventListener('click', closeAlertDialog)
+
+let confirmButtonDialog = document.querySelector('#btn-confirm');
+
+confirmButtonDialog.addEventListener('click',() =>{
+  confirmAlertDialog();
+})
