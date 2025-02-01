@@ -6,9 +6,21 @@ function Book(title, author, pages, bookStatus) {
   this.pages = pages;
   this.bookStatus = bookStatus;
 }
+
+function closeAndClean(){
+  dialog.style.display = 'none';
+  let allInputs = document.querySelectorAll('input');
+
+  allInputs.forEach(element => {
+   element.value = '';
+  });
+}
 function addBookToLibrary(title, author, pages, bookStatus) {
  const book = new Book(title, author, pages, bookStatus);
  myLibrary.push(book);
+ closeAndClean();
+ showBooks(myLibrary);
+ 
 }
 
 addBookToLibrary("The hobbit", "JRR Tolkien", 300, true);
@@ -18,30 +30,56 @@ function showBooks(array){
    let html = '';
     array.forEach(element => {
        html += `
-       <div>
-        <h1>${element.title}</h1>
-        <p>${element.author}</p>
-        <p>${element.pages}</p>
-        <p>${element.bookStatus}</p>
-       </div>
-        
-
+        <div class="card">
+            <button class="btn-delete" value='${element.title}'><img src='assets/trash_icon.svg' alt='Trash icon'></button>
+            <div class="card-content">
+                
+                <h3 class="book-title">${element.title}</h3>
+                <p class="book-author">Author: ${element.author}</p>
+                <p class="book-pages">Páginas: ${element.pages}</p>
+                <p class="book-status">Status: ${element.bookStatus}</p>
+            </div>
+        </div>
         `;        
     });
 
     main.innerHTML = html;
+    let allDeleteButton = document.querySelectorAll('.btn-delete');
+    addEventToDeleteButon(allDeleteButton);
 }
 
 showBooks(myLibrary);
 
-document.querySelector('#add-book').addEventListener('click', (event) =>{
-    event.preventDefault();
+document.querySelector('form').addEventListener('submit', (event) =>{
+    
     let formData = new FormData(document.querySelector('form'))
+    let allInputs = document.querySelectorAll('input');
     addBookToLibrary(
       formData.get('title'),
       formData.get('author'),
       formData.get('pages'),
       formData.get('bookStatus'));
 
-      showBooks(myLibrary);
+      event.preventDefault();
 })
+function deleteBook(index){
+  alert(index);
+  myLibrary.splice(index, 1);
+  
+  showBooks(myLibrary);
+}
+
+function addEventToDeleteButon(elements){
+  elements.forEach((element, index) => {
+    element.addEventListener("click", (e) => {
+      deleteDialog(e.clientX, e.clientY, index);
+    })
+  })
+}
+
+function deleteDialog(x, y, index){
+  let el = document.querySelector('#delete-dialog');
+  el.style.display = 'block';
+  el.style.top = `${y}px`;
+  el.style.left = `${x}px`;
+}

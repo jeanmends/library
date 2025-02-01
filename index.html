@@ -9,36 +9,55 @@
 <body>
     <div class="container">
         <div class="header">
-
+            <h1>BOOK LIBARY</h1>
+            <h6>Keep track of your readings!</h6></h3>
               
         </div>
         <div class="section">
-            <!--           
-            <dialog>                
-                <form>
-                    <label for="title"> Title
-                        <input type='text' name='title' id='title' />
-                    </label>
-                    <label for="author"> Author
-                        <input type='text' name='author' id='author' />
-                    </label>
-                    <label for="pages"> Pages
-                        <input type='text' name='pages' id='pages' />
-                    </label>
-                    <label for="bookStatus"> Have Read?
-                        <input type='text' name='bookStatus' id='bookStatus' />
-                    </label>
-                    <br>
-                    <button type="submit" id="add-book">Create</button>
-                    <button autofocus>Close</button>
+                        
+            <div class="dialog" id="dialog"> 
+                               
+                <form method="post">
+                    <h1>BOOK INFORMATIONS</h1>       
+
+                      <div class="form-row">
+                        <label for="title"> Title </label>
+                        <input type='text' name='title' id='title' required />                        
+                      </div>
+
+                      <div class="form-row">
+                        <label for="author"> Author </label>
+                        <input type='text' name='author' id='author' required/>                   
+                      </div>
+                      <div class="form-row">                      
+                        <label for="pages"> Pages </label>
+                        <input type='text' name='pages' id='pages' required/>                        
+                      </div>
+                      <div class="form-row"> 
+                        <label for="bookStatus"> Have Read? </label>
+                        <input type='text' name='bookStatus' id='bookStatus' required />                    
+                      </div>
+                      <div class="form-row">
+                    <div class="container-btns">
+                        <button type="submit" id="add-book" class="btns-low">Create</button>
+                        <button type="button" id="close-btn" class="btns-low">Close</button>
+                    </div>            
+                </div>
+                        
+                    
+
                 </form>
                 
-              </dialog>
-              <button type="button">Add New Book</button>
-              -->  
+            </div>
+              <button type="button" id="btn-open-add" class="btn-add"><img src="assets/add_circle.svg" alt="add icon" class="add-icon">Book</button>
         </div>
         <div id="main">
 
+        </div>
+        <div class="delete-dialog" id="delete-dialog">
+          <h1>Do you really want to delete this book? </h1>
+          <button type="button" class="btns-low">Confirmar</button>
+          <button type="button" class="btns-low">Cancelar</button>
         </div>
     </div>
 

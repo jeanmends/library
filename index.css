@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root{
     --bg-color: #121212;
+    --bg-header-color: #4CAF50;
 }
 
 *{
@@ -8,15 +12,207 @@
     box-sizing: border-box;
 }
 
-html{
+.container{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
     background-color: var(--bg-color);
-    display: flex;
-    justify-content: center;    
+    font-family: "Roboto", serif;
 }
 
-.container{
+.header{
+    width: 100vw;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    background-color: var(--bg-header-color);
+    color: #ffffff;
+    letter-spacing: 5px;
+}
+
+
+.header > h1{
+    font-family: "Bebas Neue", serif;
+    font-size: 4rem;
+    
+}
+
+.header > h6{
+    font-family: "Bebas Neue", serif;
+    letter-spacing: 2px;
+    font-size: 1.5rem; 
+}
+/*old version of styles for btn-add*/
+/*
+.btn-add{
+    padding: 5px;
+    font-size: 2rem;
+    background-color: #fca311;
+    color: #14213d;
+    display: flex;
+    border-radius:5px;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+    border: 2px solid #fca311;
+    cursor: pointer;
+}
+*/
+/* new version */
+.btn-add {
+    padding: 8px 20px;
+    font-size: 1.5rem;
+    background-color: #4CAF50; /* Cor verde mais suave */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 8px; /* Bordas arredondadas mais suaves */
+    gap: 10px; /* Espaçamento entre o ícone e o texto */
+    border: 2px solid #4CAF50; /* Borda verde */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transição suave para o hover e active */
+    margin: 15px;
+}
+
+.btn-add:hover {
+    background-color: #45a049; /* Verde mais escuro no hover */
+    border-color: #45a049; /* Borda também fica mais escura */
+}
+
+.btn-add:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+.add-icon {
+    width: 24px; /* Tamanho do ícone */
+    height: 24px;
+}
+.dialog{
+    position: absolute;
+    padding: 10px;
+    top: 200px;
+    left: 100px;
+    width: 400px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #1f1f1f;;
+    border-radius: 10px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100hw;
+}
+input{
+    font-size: 1rem;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+}
+
+input:focus{
+    outline: 2px solid #14213d;
+}
+.form-row{
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: flex-start;
+    line-height: 1.5;
+    margin: 5px;
+}
+.btns-low{
+    padding: 10px;
+    margin-top: 10px;
+    background-color:#4CAF50; 
+    color: #000000;
+    font-size: 1rem;
+    margin-right: 10px;
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+    padding: 5px;
+}
+
+/* layout of cards*/
+
+.card {
+    background-color: #1f1f1f; /* Cartões com fundo mais escuro */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 200px;
+    transition: transform 0.2s ease;
+    margin: 10px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+
+
+.book-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff; /* Título em branco */
+}
+
+.book-author, .book-pages, .book-status {
+    font-size: 14px;
+    color: #b0b0b0; /* Texto em cinza claro */
+    margin-bottom: 5px;
+}
+
+.book-status {
+    font-weight: bold;
+}
+
+.book-status.Lido {
+    color: #4CAF50; /* Verde para "Lido" */
+}
+
+.book-status.NaoLido {
+    color: #f44336; /* Vermelho para "Não Lido" */
+}
+
+
+/* */
+.btn-delete{
+    background-color: #1f1f1f;
+    border: none;
+    text-align: right;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.btn-delete:hover{
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#delete-dialog{
+    display: none;
+    background-color: white;
+    position: absolute;
+    z-index: 9999;
 }
