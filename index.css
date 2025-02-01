@@ -175,12 +175,12 @@ input:focus{
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #fff; /* Título em branco */
+    color: #fff; 
 }
 
 .book-author, .book-pages, .book-status {
     font-size: 22px;
-    color: #b0b0b0; /* Texto em cinza claro */
+    color: #b0b0b0; 
     margin-bottom: 5px;
 }
 
@@ -188,13 +188,6 @@ input:focus{
     font-weight: bold;
 }
 
-.book-status.Lido {
-    color: #4CAF50; /* Verde para "Lido" */
-}
-
-.book-status.NaoLido {
-    color: #f44336; /* Vermelho para "Não Lido" */
-}
 
 
 /* */
